@@ -1,0 +1,34 @@
+.strike {text-decoration: line-through; font-weight: normal;}
+
+.main-style
+{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: linear-gradient(to right, #f857a6, #ff5858);
+    padding: 3em;
+    font-weight: 100;
+}
+
+.todo-style
+{
+    background-color: white;
+    padding: 1em;
+    font-weight: bold;
+    font-weight: 800;
+    box-shadow: 10px 5px 5px blue;
+}
+
+.all-done
+{
+    font-size: larger;
+    font-weight: bold;
+    color: green;
+}
+
+.button-icons
+{
+    padding: 0;
+    border: none;
+    background: none;
+    float: right;
+    padding-left: 5px;
+}
