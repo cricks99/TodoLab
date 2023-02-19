@@ -2,8 +2,7 @@
   <div class="todo-style">
     <h2>My Todo List</h2>
     <br />
-    <label for="taskFilter">Filter:&nbsp;</label>
-    <input name="taskFilter" [(ngModel)]="filterTasks" />
+    <input name="taskFilter" placeholder="Filter tasks" size=30 [(ngModel)]="filterTasks" />
     <br />
 
     <div *ngIf="allComplete">
@@ -18,15 +17,17 @@
           <div class="col-sm-1">
             {{i + 1}}.
           </div>
-          <div [ngClass]="item.completed ? 'col-sm-9 strike' : 'col-sm-9'">
-            <button *ngIf="!item.completed" (click)="completeTask(i)">Complete</button>
-
-            {{item.task}}
+          <!-- <div [ngClass]="item.completed ? 'col-sm-9 strike' : 'col-sm-9'"> -->
+          <div [ngClass]="'col-sm-9' + (item.completed ? ' strike' : '')">
+            <ng-container *ngIf="!item.editingTask">
+              <button *ngIf="!item.completed" (click)="completeTask(i)">Complete</button>
+              {{item.task}}
+            </ng-container>
 
             <form *ngIf="item.editingTask" #updateTask="ngForm" (ngSubmit)="editTask(i, updateTask)">
-              <label for="task">Edit task: &nbsp;</label>
-              <input name="task" id="task" ngModel />
-              <button>Change Task</button>
+              <!-- <label for="task">Edit task: &nbsp;</label> -->
+              <input name="task" size="40" [ngModel]="item.task" ngModel />
+              <button>Save</button>
             </form>
           </div>
 
@@ -41,9 +42,9 @@
 
     <br />
     <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
-      <label for="task">Enter a new task: &nbsp;</label>
-      <input name="task" id="task" ngModel />
-      <button>Add Task</button>
+      <label for="task">Add task: &nbsp;</label>
+      <input name="task" size=30 ngModel />
+      <button>Add</button>
     </form>
   </div>
 </div>
